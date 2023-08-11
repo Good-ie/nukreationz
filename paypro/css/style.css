@@ -1,0 +1,126 @@
+.payment-details {
+  padding: 20px;
+  text-align: center;
+  left: 0;
+  top: 0;
+  background: #ffffff;
+  box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.09);
+  border-radius: 0px;
+  margin: 20px;
+}
+.payment-details form {
+  padding: 10px;
+}
+.payment-body {
+  margin-top: 50px;
+}
+form input {
+  margin: 30px 0;
+}
+
+.pay:active {
+  transform: translateY(2px);
+}
+.pay {
+  padding: 10px 30px !important;
+  background: #ff8b3b !important;
+  border: none !important;
+  width: 100%;
+  color: #fff;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  padding: 10px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.otp-input input[type="password"] {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  padding: 10px;
+  font-size: 24px;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+.pin {
+  padding: 10px 30px !important;
+  background: #ff8b3b !important;
+  border: none !important;
+  color: #fff !important;
+  margin-top: 20px;
+}
+
+.loader {
+  border: 6px solid #ff8b3b;
+  border-top: 6px solid #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.hidden {
+  display: none !important;
+}
+
+.checkbox {
+  /* width: 64px; */
+  height: 120px;
+  margin-top: 50px;
+  position: relative;
+}
+
+.checkbox svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.checkbox .circle {
+  stroke-dasharray: 188.5;
+  stroke-dashoffset: 188.5;
+  animation: circle 0.6s ease-in-out forwards;
+}
+
+.checkbox .check {
+  stroke-dasharray: 0 98;
+  stroke-dashoffset: 0;
+  animation: check 0.6s ease-in-out forwards;
+}
+
+@keyframes circle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes check {
+  to {
+    stroke-dasharray: 98 100;
+    stroke-dashoffset: -196;
+  }
+}
+.logo img {
+  width: 100px;
+}
