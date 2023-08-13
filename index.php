@@ -126,6 +126,7 @@
 
     .service-card {
         border: 1px solid #f58634;
+        text-align: center;
         margin-bottom: 15px;
         padding: 10px;
         border-radius: 5px;
@@ -332,19 +333,28 @@ gtag('config', 'G-LCSB1QPGJX');
                         class="service-cards">
                         <div class="service-card">
                             <p>WEB DEVELOPEMENT</p>
-                            <button class="btn btn-secondary">Learn More</button>
+                            <div style="text-align: center;">
+                                <button class="btn btn-secondary">Learn More</button>
+                            </div>
+
                         </div>
                         <div class="service-card">
                             <p>SOCIAL MEDIA MARKETING</p>
-                            <button class="btn btn-secondary">Learn More</button>
+                            <div style="text-align: center;">
+                                <button class="btn btn-secondary">Learn More</button>
+                            </div>
                         </div>
                         <div class="service-card">
                             <p>BEST BRAND STRATEGY</p>
-                            <button class="btn btn-secondary">Learn More</button>
+                            <div style="text-align: center;">
+                                <button class="btn btn-secondary">Learn More</button>
+                            </div>
                         </div>
                         <div class="service-card">
                             <p>SEARCH ENGINE OPTIMIZATION</p>
-                            <button class="btn btn-secondary">Learn More</button>
+                            <div style="text-align: center;">
+                                <button class="btn btn-secondary">Learn More</button>
+                            </div>
                         </div>
                     </div>
                 </div>

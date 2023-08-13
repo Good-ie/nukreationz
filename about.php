@@ -336,7 +336,7 @@
                                     With Nukreationz Digital, you get a dedicated partner who plans and executes
                                     strategies that drive your business to perpetual growth.
                                     Our certainty of getting results is backed by the collective years of experience of
-                                    our team of;<br>
+                                    our team of;<br><br>
 
                                     Social Media Managers | Search Engine Optimists | Web Developers | Brand Strategists
                                     Online Ad Experts | Customer Service Specialists and Project Managers.
@@ -537,10 +537,10 @@
 
                                     In searching for a digital marketing company, after you have considered your goals,
                                     set your budget, and finally, research your options, You should strongly consider
-                                    the following before choosing a digital marketing company:
+                                    the following before choosing a digital marketing company: <br><br>
                                     Reviews and Portfolio | Clarity and Honesty In Communication, and Negotiation, |
                                     Availability Of Various Packages To Suite Your Goals, and Budget | Reputation and
-                                    Capability | Customer Service.
+                                    Capability | Customer Service.<br><br>
 
                                     We, at Nukreationz Digital, are a team of experienced digital marketers who
                                     research, implement and execute digital marketing strategies that yield desired
