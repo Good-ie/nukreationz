@@ -421,9 +421,9 @@
 
                                 <div class="feature-six__content__text">
 
-                                    Position ourselves as an elite brand globally. Using all of our resources from
-                                    research to desired goals to help businesses reach their goals.
-
+                                    We are a team of professionals that offer high quality branding and technology
+                                    solutions that fufil our client's business objectives whilist also delivering
+                                    superior returns to our shareholders
 
 
                                 </div>
