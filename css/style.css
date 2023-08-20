@@ -1591,7 +1591,7 @@ a:hover {
   }
 
   .logo-img {
-    margin-left: 4px !important;
+    margin-left: -80px !important;
 
     width: 40%;
   }
