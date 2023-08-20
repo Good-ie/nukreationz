@@ -274,7 +274,7 @@ gtag('config', 'G-RM806B8K89');
                 <a class="<?php if($currentPage =='pricing'){echo 'active';}?>" href="pricing">PRICING</a>
 
                 <a class="<?php if($currentPage =='support'){echo 'active';}?>" href="support">SUPPORT</a>
-                <a href="logout">LOGOUT</a>
+
 
             </div>
 
@@ -389,6 +389,8 @@ gtag('config', 'G-RM806B8K89');
 
                 <li><a class="<?php if($currentPage =='support'){echo 'active';}?>" href="profileSettings">PROFILE</a>
                 </li>
+                <br>
+                <li> <a href="logout">LOGOUT</a></li>
 
             </ul>
 
