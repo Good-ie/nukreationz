@@ -118,7 +118,7 @@ if(session_id() == ''){
 
             <p>Say goodbye to boring, static QR codes and hello to a new level of engagement with your customers</p>
 
-            <div class="mobile-button"><button>Get Started</button></div>
+            <div class="mobile-button"><a href="tools"><button>Get Started</button></a></div>
 
 
 
