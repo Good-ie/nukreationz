@@ -4,7 +4,33 @@ include("conn.php");
 if (!isset($_SESSION['username'])) {
     $_SESSION['msg'] = "You must log in first";
     header('location: login.php');
+    
 }
+
+
+
+$user_id = $_SESSION["user_id"];
+
+$newplan = mysqli_query($db, "SELECT * FROM user where user_id = $user_id ");
+if(mysqli_num_rows($newplan)>0){
+    while($row = mysqli_fetch_assoc($newplan)){        
+        $newplannow = $row['plan'];
+        $username = $row['username']; 
+        $created_at = $row['created_at']; 
+        $email = $row['email'];  
+        $firstname = $row['firstname'];
+        $lastname = $row['lastname'];  
+        $profileimage = $row['profile_image'];         
+    }  
+}
+
+// $plan =  $_SESSION["plan"];
+// $user_plan = strval($plan);  
+
+// if($user_plan === "free"){
+//     header('location: pricing.php');
+// }
+
     
 ?>
 <!DOCTYPE html>
@@ -13,6 +39,24 @@ if (!isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title"
+        content="NUKZ QR - The Best QR Code Generator for Android and IOS | Nukreationz Digital" />
+    <meta property="og:url" content="https://www.nukreationzdigitals.com/qr" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta property="og:type" content="website">
+    <meta name="keywords"
+        content="QR Code Generator, QR Code Generator, Free QR Code Generator, Free QR Code Generator Online, QR Code Management Platform, Professional QR Code Generator, Business QR Code Generator, custom QR Codes" />
+    <meta name="description"
+        content="Generate fast, unique and dynamic QR codes with NUKZ QR. Our QR code generator is compatible with android and IOS devices. Get started now!" />
+
+
+    <meta property="og:image" content="https://nukreationzdigital.com/qr/img/qrimage.png">
+    <meta property="og:site_name" content="NUKZ QR">
+    <meta property="og:description"
+        content="Experience the power of our top-rated QR Code generator and management platform designed for businesses and marketing purposes. Generate custom QR Codes with ease, bulk upload capabilities, APIs, and various shapes. Our platform supports a wide range of applications, including links, social media, apps, forms, URLs, vCards, Facebook, Instagram, websites, YouTube, and much more. Get started today and elevate your QR Code strategy to new heights.">
+    <link rel="shortcut icon" href="img/Nukreakionz Smartcard Logo 2.png" />
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,8 +69,17 @@ if (!isset($_SESSION['username'])) {
     <link href="./cropperjs/cropper.min.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Login</title>
+    <title>NUKZ QR - The Best QR Code Generator for Android and IOS | Nukreationz Digital</title>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RM806B8K89"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RM806B8K89');
+</script>
 <body>
     <!-- <div id="loader"></div> -->
     <style>
@@ -72,19 +125,20 @@ if (!isset($_SESSION['username'])) {
     </style>
 
 
-    <div class="navbar" style="display: flex; justify-content: space-evenly;" >
+    <div class="navbar" style="z-index: 999; display: flex; justify-content: space-evenly;" >
         <div class="nav"  id="myHeader">
             <div>
                 <img id="image" class="logo-img" src="img/NDA Logo 1 3.png" alt="">
             </div>
             <div style="text-align: center; margin-left: 100px; justify-content: center; display: flex;" class="nav-text">
-                <a class="<?php if($currentPage =='home'){echo 'active';}?>" href="index.php">HOME</a>
+                <a class="<?php if($currentPage =='home'){echo 'active';}?>" href="./">HOME</a>
                 <!-- <a href="">ABOUT US</a> -->
-                <a class="<?php if($currentPage =='createCard'){echo 'active';}?>" href="">DASHBOARD</a>
+                <a class="<?php if($currentPage =='dashboard'){echo 'active';}?>" href="dashboard">DASHBOARD</a>
                 
-                <a class="<?php if($currentPage =='tools'){echo 'active';}?>" href="tools.php">TOOLS</a>
-                <a class="<?php if($currentPage =='wallet'){echo 'active';}?>" href="wallet.php">WALLET</a>
-                <a href="">SUPPORT</a>
+                <a class="<?php if($currentPage =='tools'){echo 'active';}?>" href="tools">GENERATE QR CODE</a>
+                <a class="<?php if($currentPage =='wallet'){echo 'active';}?>" href="wallet">WALLET</a>
+                <a class="<?php if($currentPage =='pricing'){echo 'active';}?>" href="pricing">PRICING</a>
+                <a class="<?php if($currentPage =='support'){echo 'active';}?>" href="support">SUPPORT</a>
             </div>
 
             <div class="mobile-menu icon">
@@ -102,8 +156,8 @@ if (!isset($_SESSION['username'])) {
                      
                     
                    
-                        <img class="img" style="width: 50px; cursor: pointer; height: 50px; margin-top: px; border-radius: 50%; background: #D9D9D9;
-                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12); padding: 8px;" src="./admin/img/user-img.png" alt="nukreationz"  ">
+                        <img class="img" style=" object-fit: cover; width: 50px; cursor: pointer; height: 50px; margin-top: px; border-radius: 50%; background: #D9D9D9;
+                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12); padding: 2px;" src="<?php if(!empty($profileimage)){echo'uploads/',$profileimage;}else{echo'img/user-img.png';} ?>" alt="nukreationz"  ">
                     
                    
                     
@@ -116,11 +170,12 @@ if (!isset($_SESSION['username'])) {
         <div class="top-profile-card " style="display: none;">
             <div class="top-profile-card-img">
                 <h2>Welcome<br> <?php echo $_SESSION['username']; ?>!</h2>
+                <h4 style="font-size: 15px; margin-bottom: 20px; margin-top: 10px;">Current Plan: <b style="text-transform: uppercase;"> <?php echo $newplannow; ?></b></h4>
             </div>
 
-            <ul>
-                <li><a class="<?php if($currentPage =='userProfile'){echo 'active';}?>" href="user-profile.php">Profile</a></li>
-                <li><a class="<?php if($currentPage =='userProfile'){echo 'active';}?>" href="user-profile.php">Settings</a></li>
+            <ul style="margin-left: 20px; font-size: 18px;">
+                <li><a class="<?php if($currentPage =='userProfile'){echo 'active';}?>" href="profileSettings">Profile</a></li>
+                <li><a class="<?php if($currentPage =='settinga'){echo 'active';}?>" href="profileSettings">Settings</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
@@ -128,13 +183,15 @@ if (!isset($_SESSION['username'])) {
 
     <div class="mobile-menu-list" style="display: none;">
             <ul class="">
-                <li><a class="<?php if($currentPage =='home'){echo 'active';}?>" href="index.php">HOME</a></li><br>
+                <li><a class="<?php if($currentPage =='home'){echo 'active';}?>" href="./">HOME</a></li><br>
                         <!-- <a href="">ABOUT US</a> -->
-                <li><a class="<?php if($currentPage =='createCard'){echo 'active';}?>" href="card_details.php">DASHBOARD</a></li><br>
+                <li><a class="<?php if($currentPage =='createCard'){echo 'active';}?>" href="dashboard">DASHBOARD</a></li><br>
                 
-                <li><a class="<?php if($currentPage =='tools'){echo 'active';}?>" href="tools.php">TOOLS</a></li><br>
+                <li><a class="<?php if($currentPage =='tools'){echo 'active';}?>" href="tools">GENERATE QR CODE</a></li><br>
+                <li><a class="<?php if($currentPage =='pricing'){echo 'active';}?>" href="pricing">PRICING</a></li><br>
                 
-                <li><a href="">SUPPORT</a></li>
+                <li><a class="<?php if($currentPage =='support'){echo 'active';}?>" href="support">SUPPORT</a></li><br>
+                <li><a class="<?php if($currentPage =='support'){echo 'active';}?>" href="profileSettings">PROFILE</a></li>
             </ul>
         </div>
     
@@ -151,6 +208,7 @@ if (!isset($_SESSION['username'])) {
              
             user_image.addEventListener('click', function(){
                 console.log('clicked');
+                event.stopPropagation();
 
                 if(user_profile_card.style.display === "none"){
                     user_profile_card.style.display = "block";
@@ -159,6 +217,17 @@ if (!isset($_SESSION['username'])) {
                 }
                 
              });
+             
+             document.addEventListener('click', function(event) {
+                 if (!user_profile_card.contains(event.target) && event.target !== user_image) {
+                    user_profile_card.style.display = "none";
+                 }
+             });
+             window.addEventListener('scroll', function() {
+              if (user_profile_card.style.display !== "none") {
+                user_profile_card.style.display = "none";
+              }
+            });
              user_profile_card.addEventListener('mouseout', function(){
                 if(user_profile_card.style.display === "none"){
                     user_profile_card.style.display = "block";
@@ -178,6 +247,12 @@ if (!isset($_SESSION['username'])) {
                 } else {
                     menu_link.style.display = "block";
                 }
+            });
+            
+            
+            window.addEventListener('scroll', function() {
+                // Set the display property of the menu_link element to "none"
+                menu_link.style.display = "none";
             });
 
         </script>

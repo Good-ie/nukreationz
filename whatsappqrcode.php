@@ -7,6 +7,18 @@ if (!isset($_SESSION['username'])) {
     header('location: login.php');
 }
 
+$user_id = $_SESSION["user_id"];
+
+$newplan = mysqli_query($db, "SELECT * FROM user where user_id = $user_id ");
+if(mysqli_num_rows($newplan)>0){
+    while($row = mysqli_fetch_assoc($newplan)){        
+        $newplannow = $row['plan'];               
+    }  
+}
+if($newplannow === 'free'){
+    echo "<script>location.href='pricing.php';</script>";
+}
+
 ?>
 
 
