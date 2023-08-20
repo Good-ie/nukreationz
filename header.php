@@ -136,16 +136,13 @@ gtag('config', 'G-RM806B8K89');
 
             <ul class="">
 
-                <!-- <li><a class="<?php if($currentPage =='home'){echo 'active';}?>" href="index.php">HOME</a></li> -->
 
-                <!-- <a href="">ABOUT US</a> -->
 
-                <li><a class="<?php if($currentPage =='createCard'){echo 'active';}?>" href="login">LOGIN</a></li>
+                <li><a href="login">LOGIN</a></li>
 
 
 
-                <li style="margin-top: 20px;"><a class="<?php if($currentPage =='userProfile'){echo 'active';}?>"
-                        href="register">SIGN UP</a></li>
+                <li style="margin-top: 20px;"><a href="register">SIGN UP</a></li>
 
 
 
