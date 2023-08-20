@@ -1425,7 +1425,7 @@ a:hover {
   .sticky img {
     /*margin-top: 0 !important;*/
 
-    margin-left: 3px !important;
+    margin-left: -30px !important;
   }
 
   .user-card {
