@@ -41,9 +41,8 @@ if(mysqli_num_rows($newplan)>0){
     }  
 
 }
-
+$sub_end = new DateTime($sub_end_date);
 $currentDate = new DateTime();
-echo $currentDate;
 if($currentDate > $sub_end_date){
     $sql = "UPDATE  user SET plan = 'free', created_at ='$created_at', updated_at = NOW() WHERE user_id = $user_id ";
     if($db->query($sql) === true){
