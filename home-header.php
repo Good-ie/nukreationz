@@ -42,10 +42,20 @@ if(mysqli_num_rows($newplan)>0){
 
         $lastname = $row['lastname'];  
 
-        $profileimage = $row['profile_image'];         
+        $profileimage = $row['profile_image'];  
+        $sub_end_date = $row['sub_end'];       
 
     }  
 
+}
+
+$currentDate = new DateTime();
+if($currentDate > $sub_end_date){
+    $sql = "UPDATE  user SET plan = 'free', created_at ='$created_at', updated_at = NOW() WHERE user_id = $user_id ";
+    if($db->query($sql) === true){
+
+            $user_id = mysqli_insert_id($db);
+    }
 }
 
 
