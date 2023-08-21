@@ -19,7 +19,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 $user_id =  $_SESSION["user_id"];
-$sql = "SELECT plan FROM user WHERE user_id = $user_id";
+$sql = "SELECT * FROM user WHERE user_id = $user_id";
 $plan = mysqli_query($db, $sql);
 if (mysqli_num_rows($plan) > 0) {
 
