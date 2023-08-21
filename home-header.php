@@ -15,14 +15,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 
-
-
-
-
-
 $user_id = $_SESSION["user_id"];
-
-
 
 $newplan = mysqli_query($db, "SELECT * FROM user where user_id = $user_id ");
 
@@ -50,6 +43,7 @@ if(mysqli_num_rows($newplan)>0){
 }
 
 $currentDate = new DateTime();
+echo $currentDate;
 if($currentDate > $sub_end_date){
     $sql = "UPDATE  user SET plan = 'free', created_at ='$created_at', updated_at = NOW() WHERE user_id = $user_id ";
     if($db->query($sql) === true){
@@ -60,17 +54,7 @@ if($currentDate > $sub_end_date){
 
 
 
-// $plan =  $_SESSION["plan"];
 
-// $user_plan = strval($plan);  
-
-
-
-// if($user_plan === "free"){
-
-//     header('location: pricing.php');
-
-// }
 
 
 
