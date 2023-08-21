@@ -7,6 +7,7 @@ if(session_id() == ''){
     session_start();
 
 }
+echo $_SESSION['user_type'];
 
 if (!isset($_SESSION['admin'])) {
     echo "you are not authorised to access this page";
@@ -35,17 +36,10 @@ if ($_SESSION['status'] == 'suspend') {
 
 $user_id = $_SESSION['user_id'];
 
-//include("login-handler.php");
-
     $currentPage = 'dashboard';
-
-    
-
     if (isset($_SESSION['username'])){
 
         include("admin-header.php");
-
-        //echo $_SESSION["user_id"];
 
     }
 
