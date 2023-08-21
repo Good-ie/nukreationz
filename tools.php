@@ -28,10 +28,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 }
 
-
 $user_plan = strval($user_plan);
-
-echo $user_plan;
 
 ?>
 
