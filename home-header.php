@@ -51,12 +51,12 @@ if ($currentDate > $sub_end) {
         // Successfully updated the user's plan
         $affected_rows = $db->affected_rows;
         if ($affected_rows > 0) {
-            echo "User's plan has been updated to 'free' due to subscription expiration.";
+            
         } else {
-            echo "No rows were affected by the update.";
+        
         }
     } else {
-        echo "Error updating user's plan: " . $db->error;
+        
     }
 }
 
