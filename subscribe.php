@@ -237,7 +237,7 @@ if(mysqli_num_rows($result2) > 0 ){
 
         var handler = PaystackPop.setup({
 
-            key: testapi,
+            key: api,
 
             email: email,
 
