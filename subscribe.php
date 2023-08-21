@@ -271,7 +271,7 @@ if(mysqli_num_rows($result2) > 0 ){
 
                             "&period=" +
 
-                            period;
+                            period + "&price=" + price;
 
 
 
