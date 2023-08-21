@@ -48,7 +48,6 @@ if ($currentDate > $sub_end) {
     $sql = "UPDATE user SET plan = 'free', created_at = '$created_at', updated_at = NOW() WHERE user_id = $user_id";
     
     if ($db->query($sql) === true) {
-        // Successfully updated the user's plan
         $affected_rows = $db->affected_rows;
         if ($affected_rows > 0) {
             
