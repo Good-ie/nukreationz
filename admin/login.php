@@ -32,50 +32,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         exit();
 
-    }else if($result){
-        if (mysqli_num_rows($result) > 0) {
-            $admin = mysqli_fetch_assoc($result);
-            $adminstatus = $admin['status'];
-        
-        
-    
-
-
-            $num_row = mysqli_num_rows($result);
-
-            if ($num_row > 0) {
-
-                $data = mysqli_fetch_array($result);
-
-                $_SESSION['loggedin'] = true;
-
-                $_SESSION["username"] = $data["username"];
-
-                $_SESSION["admin_id"] = $data["admin_id"];
-
-                $_SESSION["email"]= $data["email"];
-
-                $_SESSION["user_type"]= $data["user_type"];
-
-                $_SESSION["admin_type"]= $data["admin_type"];
-
-                $_SESSION["status"]= $data["status"];
-
-
-
-                header("Location: index.php");
-
-            } else if($num_row > 0 && $adminstatus == "suspended"){
-                echo '<script>alert("Your admin access has been suspended");</script>';
-            }else {
-
-                array_push($errors, "Wrong username/password combination");
-
-                
-
-            }
-        }
     }
+    
+    if ($result) {
+    if (mysqli_num_rows($result) > 0) {
+        $admin = mysqli_fetch_assoc($result);
+        $adminstatus = $admin['status'];
+        
+        if ($adminstatus == "suspended") {
+            echo '<script>alert("Your admin access has been suspended");</script>';
+        } else {
+            $_SESSION['loggedin'] = true;
+            $_SESSION["username"] = $admin["username"];
+            $_SESSION["admin_id"] = $admin["admin_id"];
+            $_SESSION["email"] = $admin["email"];
+            $_SESSION["user_type"] = $admin["user_type"];
+            $_SESSION["admin_type"] = $admin["admin_type"];
+            $_SESSION["status"] = $admin["status"];
+            
+            header("Location: index.php");
+        }
+    } else {
+        array_push($errors, "Wrong username/password combination");
+        echo '<script>alert("Wrong username/password combination");</script>';
+    }
+}
+
+
 
 }
 
