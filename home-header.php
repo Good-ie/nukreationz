@@ -357,7 +357,7 @@ gtag('config', 'G-RM806B8K89');
                     <li><a class="<?php if($currentPage =='settinga'){echo 'active';}?>"
                             href="profileSettings">Settings</a></li>
 
-                    <li><a href="logout.php">Logout</a></li>
+                    <li><a href="logout">Logout</a></li>
 
                 </ul>
 
