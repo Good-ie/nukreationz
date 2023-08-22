@@ -83,7 +83,7 @@ gtag('config', 'G-RM806B8K89');
 
 <body>
     <style>
-    @media only screen and (min-width: 600px) {
+    @media only screen and (min-width: 900px) {
         #nav-nav-img {
             margin-left: -80px !important;
         }
