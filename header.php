@@ -82,6 +82,11 @@ gtag('config', 'G-RM806B8K89');
 </script>
 
 <body>
+    <style>
+    #nav-nav-img {
+        margin-left: -80px !important;
+    }
+    </style>
 
     <div class="navbar">
 
@@ -91,8 +96,7 @@ gtag('config', 'G-RM806B8K89');
             <div>
                 <a href="./">
 
-                    <img style="margin-left: -80px !important;" id="image" class="logo-img" src="img/NDA Logo 1 3.png"
-                        alt="">
+                    <img id="image nav-nav-img" class="logo-img" src="img/NDA Logo 1 3.png" alt="">
                 </a>
             </div>
 
