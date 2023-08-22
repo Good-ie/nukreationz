@@ -37,15 +37,7 @@
     include("card-details-handler.php");
 
     
-    $user_id =  $_SESSION["user_id"];
-    $sql = "SELECT * FROM user WHERE user_id = $user_id";
-    $result = mysqli_query($db, $sql);
-
-    if ($result && mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $plan = $row["plan"];
-
-    }
+    
 
     $plan = strval($plan);
     $maximage = 1;

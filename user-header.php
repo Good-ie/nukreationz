@@ -365,7 +365,7 @@ gtag('config', 'G-RM806B8K89');
 
                     <h2>Welcome<br> <?php echo $_SESSION['username']; ?>!</h2>
 
-                    <h4 style="font-size: 15px; margin-bottom: 10px;">Current Plan<br> <?php echo $_SESSION['plan']; ?>!
+                    <h4 style="font-size: 15px; margin-bottom: 10px;">Current Plan<br> <?php echo $plan; ?>!
                     </h4>
 
                 </div>
