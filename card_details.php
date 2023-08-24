@@ -617,6 +617,7 @@ img {
 </div>
 
 <div style="display: none" class="overlay"></div>
+<script src="./js/page.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -632,7 +633,7 @@ img {
 
 
 
-<script src="./js/page.js"></script>
+
 
 <script src="./js/profile.js"></script>
 
@@ -641,16 +642,9 @@ var bs_modal = $('#modal');
 
 var image = document.getElementById('image1');
 
-
-
-
-
 var img2 = document.getElementById('pimage2');
 
 var cropper, reader, file;
-
-
-
 
 
 $("body").on("change", ".image", function(e) {
