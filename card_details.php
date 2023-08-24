@@ -665,15 +665,9 @@ $("body").on("change", ".image", function(e) {
 
     };
 
-
-
-
-
     if (files && files.length > 0) {
 
         file = files[0];
-
-
 
         if (URL) {
 
@@ -697,8 +691,6 @@ $("body").on("change", ".image", function(e) {
 
 });
 
-
-
 bs_modal.on('shown.bs.modal', function() {
 
     cropper = new Cropper(image, {
@@ -719,8 +711,6 @@ bs_modal.on('shown.bs.modal', function() {
 
 });
 
-
-
 crop.addEventListener('click', function() {
 
     console.log('clicked');
@@ -737,21 +727,11 @@ crop.addEventListener('click', function() {
 
     var imageData = croppedCanvas.toDataURL();
 
-
-
-
-
     img2.src = imageData;
 
     bs_modal.modal('hide');
 
     // Get the cropped canvas
-
-
-
-
-
-
 
 });
 
@@ -859,14 +839,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 
                 };
 
-
-
-
-
                 removeLastImage();
-
-
-
             }
 
         });
