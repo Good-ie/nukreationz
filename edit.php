@@ -760,7 +760,7 @@ $alreadyuploadedimg = mysqli_num_rows($imglist2);
 
         <h1><i class="bi bi-exclamation-triangle"></i></h1>
 
-        <p>You can only upload a maximum of<b> <?php echo $maximage; ?> </b>image for your current plan.</p><br>
+        <p>You can only upload a maximum of<b> <?php echo $maximage2; ?> </b>image for your current plan.</p><br>
 
         <p>Upgrade your plan to upload more images</p>
 
@@ -863,7 +863,7 @@ $alreadyuploadedimg = mysqli_num_rows($imglist2);
 
         var addMoreImgDiv = document.querySelector('.add-more-img2');
 
-        var maximage = '<?php echo $maximage ?>'
+        var maximage = '<?php echo $maximage2 ?>'
 
         var alreadyuploadedimg = '<?php echo $alreadyuploadedimg ?>';
 
