@@ -667,3 +667,4 @@ $sql2 = mysqli_query($db, "SELECT * from card_details WHERE card_id = $id ");
 
     })
     </script>
+    <script src="js/main.js"></script>
