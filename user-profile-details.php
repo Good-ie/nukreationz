@@ -38,7 +38,7 @@ $sql2 = mysqli_query($db, "SELECT * from card_details WHERE card_id = $id ");
 ?>
 
 
-
+<?php include("home-header.php"); ?>
 
 
 <!DOCTYPE html>
