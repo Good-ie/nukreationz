@@ -38,7 +38,10 @@ $sql2 = mysqli_query($db, "SELECT * from card_details WHERE card_id = $id ");
 ?>
 
 
-<?php include("home-header.php"); ?>
+<?php include("home-header.php"); 
+$user_id = $_SESSION[ 'user_id' ];
+
+?>
 
 
 <!DOCTYPE html>
@@ -459,7 +462,7 @@ $sql2 = mysqli_query($db, "SELECT * from card_details WHERE card_id = $id ");
                                     class="btn btn-primary profile-button" type="button">Save Profile</button></a></div>
 
                         <div class="mt-5 text-center"><a
-                                href="<?php echo "https://nukreationzdigital.com/qr/edit?id=$id" ?>"><button
+                                href="<?php echo "https://nukreationzdigital.com/qr/edit-pro?id=$id&pwd=$user_id"; ?>"><button
                                     style="background: #000 !important;" class="btn btn-primary profile-button"
                                     type="button">Edit Profile</button></a></div>
 
