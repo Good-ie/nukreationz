@@ -19,12 +19,18 @@
     }
 
     $currentPage = 'createCard';
-
-
+    
 
     include("user-header.php");
 
     $id=$_GET['id'];
+    $user = $_GET['user'];
+    $user_id = $_SESSION["user_id"];
+    if($user_id != $user){
+        echo"you cant edit this profile";
+        header('Location: login.php');
+        exit;
+    }
 
     if (!isset($_SESSION['username'])) {
 

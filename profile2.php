@@ -647,12 +647,6 @@ $db->query("UPDATE card_details SET hit = hit +1,  created_on = '$created_at'  W
 
     </div>
 
-
-
-
-
-
-
     <script src="./js/page.js"></script>
 
 
@@ -665,8 +659,6 @@ $db->query("UPDATE card_details SET hit = hit +1,  created_on = '$created_at'  W
 
 
     btn1.addEventListener('click', function() {
-
-        console.log('bar code was clicked');
 
         if (qr_image.style.display === "none") {
 
