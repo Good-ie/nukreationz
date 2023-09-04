@@ -148,7 +148,7 @@ img {
 
         <div class="card-content" style="overflow: hidden;">
 
-            <form action="card_details.php" method="POST" enctype="multipart/form-data" class="info">
+            <form action="#" method="POST" enctype="multipart/form-data" class="info">
 
 
 
