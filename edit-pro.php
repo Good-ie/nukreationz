@@ -116,6 +116,9 @@ img {
                         $email = $row['email'];
 
                         $phone = $row['phone'];
+                        $color = $row['color'];
+                        $sec_color = $row['sec_colr'];
+                        $text_color = $row['text_color'];
 
                         $date = $row['created_on'];
 
@@ -232,7 +235,8 @@ img {
 
                                     <div class="color-picker-icon"><i class="bi bi-eyedropper"></i></div>
 
-                                    <input class="color-input" value="" type="text" name="color-input" placeholder="">
+                                    <input class="color-input" value="<?php echo $color; ?>" type="text"
+                                        name="color-input" placeholder="">
 
                                 </div>
 
@@ -246,8 +250,8 @@ img {
 
                                 <div class="color-picker-icon"><i class="bi bi-eyedropper"></i></div>
 
-                                <input class="color-input-sec" value="" type="text" name="color-input-sec"
-                                    placeholder="">
+                                <input class="color-input-sec" value="<?php echo $sec_color; ?>" type="text"
+                                    name="color-input-sec" placeholder="">
 
 
 
@@ -263,7 +267,8 @@ img {
 
                         <div class="color-picker-icon"><i class="bi bi-eyedropper"></i></div>
 
-                        <input class="text-color-input" value="" type="text" name="text-color-input" placeholder="">
+                        <input class="text-color-input" value="<?php echo $text_color; ?>" type="text"
+                            name="text-color-input" placeholder="">
 
 
 
