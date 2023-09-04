@@ -558,7 +558,7 @@ img {
 
         <div class="submit-card-button">
 
-            <input type="" name="reg_user" value="UPDATE">
+            <input type="button" name="reg_user" value="UPDATE">
 
         </div>
 
