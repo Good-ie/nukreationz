@@ -131,6 +131,7 @@ img {
                         $website = $row['website_link'];
 
                         $company = $row['company_name'];
+                        $profileimage = $row['images'];
 
                         $profilepage = $row['profile_page'];
 
@@ -323,9 +324,11 @@ img {
                         <?php echo $summary; ?>
                         </textarea><br>
 
-                        <input class="u-website" type="text" name="website" id="" placeholder="Website">
+                        <input class="u-website" type="text" value="<?php echo $website; ?>" name="website" id=""
+                            placeholder="Website">
 
-                        <input class="u-jobtitle" type="text" name="jobtitle" id="" placeholder="Job Title">
+                        <input class="u-jobtitle" type="text" value="<?php echo $jobtitle; ?>" name="jobtitle" id=""
+                            placeholder="Job Title">
 
                         <!-- <input class="save-change" type="submit" value="SAVE CHANGES"> -->
 
@@ -508,7 +511,7 @@ img {
 
 
 
-                        <img src="./img/user-img.png" id="pimage2" class="profile-image"
+                        <img src="./upload/<?php echo $profileimage; ?>" id="pimage2" class="profile-image"
                             style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; border: 5px solid #686868;">
 
                         <input style="opacity: 0; margin-top: -100px;position: absolute;"
