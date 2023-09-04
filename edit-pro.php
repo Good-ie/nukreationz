@@ -294,26 +294,34 @@ img {
 
                         <div style="margin-top: 50px;" class="name">
 
-                            <input class="u-fname" type="text" name="fname" id="" placeholder="First Name">
+                            <input class="u-fname" type="text" value="<?php echo $fname; ?>" name="fname" id=""
+                                placeholder="First Name">
 
-                            <input class="u-lname" type="text" name="lname" id="" placeholder="Last Name">
+                            <input class="u-lname" type="text" value="<?php echo $lname; ?>" name="lname" id=""
+                                placeholder="Last Name">
 
                         </div>
 
                         <div class="contact">
 
-                            <input class="u-email" type="email" name="email" id="" placeholder="Email">
+                            <input class="u-email" type="email" value="<?php echo $email; ?>" name="email" id=""
+                                placeholder="Email">
 
-                            <input class="u-phone" type="text" name="phone" id="" placeholder="Phone Number">
+                            <input class="u-phone" type="text" value="<?php echo $phone; ?>" name="phone" id=""
+                                placeholder="Phone Number">
 
                         </div>
 
-                        <input class="u-address" type="text" name="address" id="" placeholder="Address"><br>
+                        <input class="u-address" type="text" value="<?php echo $address; ?>" name="address" id=""
+                            placeholder="Address"><br>
 
-                        <input class="company" type="text" name="cname" id="" placeholder="Company Name"><br>
+                        <input class="company" type="text" value="<?php echo $company; ?>" name="cname" id=""
+                            placeholder="Company Name"><br>
 
                         <textarea class="u-psmmary" style="margin-bottom: 30px;" name="psummary" id="" cols="30"
-                            rows="10" placeholder="Professional Summary"></textarea><br>
+                            rows="10" placeholder="Professional Summary">
+                        <?php echo $summary; ?>
+                        </textarea><br>
 
                         <input class="u-website" type="text" name="website" id="" placeholder="Website">
 
