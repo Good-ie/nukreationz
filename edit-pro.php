@@ -24,7 +24,7 @@
     include("user-header.php");
 
     $id=$_GET['id'];
-    $user = $_GET['user'];
+    $user = $_GET['pgd'];
     $user_id = $_SESSION["user_id"];
     if($user_id != $user){
         echo"you cant edit this profile";
