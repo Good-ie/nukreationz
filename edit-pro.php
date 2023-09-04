@@ -148,7 +148,7 @@ img {
 
         <div class="card-content" style="overflow: hidden;">
 
-            <form action="" method="POST" enctype="multipart/form-data" class="info">
+            <form method="POST" enctype="multipart/form-data" class="info">
 
 
 
@@ -558,7 +558,7 @@ img {
 
         <div class="submit-card-button">
 
-            <input type="submit" name="reg_user" value="UPDATE">
+            <input type="" name="reg_user" value="UPDATE">
 
         </div>
 
