@@ -464,7 +464,7 @@ echo $user_id;
                                     class="btn btn-primary profile-button" type="button">Save Profile</button></a></div>
 
                         <div class="mt-5 text-center"><a
-                                href="<?php echo "https://nukreationzdigital.com/qr/edit-pro?id=$id&pwd=$user_id"; ?>"><button
+                                href="<?php echo "https://nukreationzdigital.com/qr/edit-pro?id=$id&pgd=$user_id"; ?>"><button
                                     style="background: #000 !important;" class="btn btn-primary profile-button"
                                     type="button">Edit Profile</button></a></div>
 
