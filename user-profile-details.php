@@ -39,7 +39,8 @@ $sql2 = mysqli_query($db, "SELECT * from card_details WHERE card_id = $id ");
 
 
 <?php include("home-header.php"); 
-$user_id = $_SESSION[ 'user_id' ];
+$user_id = $_SESSION["user_id"];
+echo $user_id;
 
 ?>
 
