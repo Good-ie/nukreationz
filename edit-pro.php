@@ -511,7 +511,7 @@ img {
 
 
 
-                        <img src="./upload/<?php echo $profileimage; ?>" id="pimage2" class="profile-image"
+                        <img src="./uploads/<?php echo $profileimage; ?>" id="pimage2" class="profile-image"
                             style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; border: 5px solid #686868;">
 
                         <input style="opacity: 0; margin-top: -100px;position: absolute;"
