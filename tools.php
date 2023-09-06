@@ -80,7 +80,7 @@ $user_plan = strval($user_plan);
 
                 <div class="tools-card-1">
 
-                    <a style="color: #000;" href="card_details">
+                    <a id="myLink" style="color: #000;" href="card_details">
 
                         <div style="display: flex; justify-content: space-between;">
 
@@ -92,11 +92,11 @@ $user_plan = strval($user_plan);
 
                             </div>
 
-                            <div class="free" style=" margin-top: 20px; margin-right: 20px; font-weight: 500; ">
+                            <!-- <div class="free" style=" margin-top: 20px; margin-right: 20px; font-weight: 500; ">
 
                                 <p>Free</p>
 
-                            </div>
+                            </div> -->
 
                         </div>
 
