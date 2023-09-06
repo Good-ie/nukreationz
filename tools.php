@@ -339,7 +339,7 @@ $user_plan = strval($user_plan);
 
                 <div class="tools-card-1">
 
-                    <a id="myLink" class="ultimal" style="color: #000;" href="#">
+                    <a id="myLink" class="ultimal" style="color: #000;" href="card_details">
 
                         <div style=" margin-top: 20px; margin-left: 20px; ">
 
@@ -709,7 +709,7 @@ $user_plan = strval($user_plan);
 
             <div class="tools-card-1">
 
-                <a id="myLink" class="ultimal" style="color: #000;" href="#">
+                <a id="myLink" class="ultimal" style="color: #000;" href="card_details">
 
                     <div style=" margin-top: 20px; margin-left: 20px; ">
 
