@@ -371,7 +371,8 @@ ul li {
                         <li><i class="bi bi-check-circle"></i> Dynamic QR codes <b>100</b></li>
 
                         <li style="text-decoration: line-through;"><i class="bi bi-check-circle"></i> Analytics
-                            <b>Advance</b></li>
+                            <b>Advance</b>
+                        </li>
 
                         <li style="text-decoration: line-through;"><i class="bi bi-check-circle"></i> Daily analytics in
                             email <b>Yes</b></li>
@@ -483,7 +484,8 @@ ul li {
                         <li><i class="bi bi-check-circle"></i> Dynamic QR codes <b>200</b></li>
 
                         <li style="text-decoration: line-through;"><i class="bi bi-check-circle"></i> Analytics
-                            <b>Advance</b></li>
+                            <b>Advance</b>
+                        </li>
 
                         <li style="text-decoration: line-through;"><i class="bi bi-check-circle"></i> Daily analytics in
                             email <b>Yes</b></li>
@@ -519,7 +521,7 @@ ul li {
 
 
 
-        <div class="monthly-plans">
+        <!-- <div class="monthly-plans">
 
             <div class="plan">
 
@@ -609,7 +611,7 @@ ul li {
 
             </div>
 
-        </div>
+        </div> -->
 
 
 
@@ -804,7 +806,8 @@ ul li {
                         <li><i class="bi bi-check-circle"></i> Dynamic QR codes <b>100</b></li>
 
                         <li style="text-decoration: line-through;"><i class="bi bi-check-circle"></i> Analytics
-                            <b>Advance</b></li>
+                            <b>Advance</b>
+                        </li>
 
                         <li style="text-decoration: line-through;"><i class="bi bi-check-circle"></i> Daily analytics in
                             email <b>Yes</b></li>
@@ -916,7 +919,8 @@ ul li {
                         <li><i class="bi bi-check-circle"></i> Dynamic QR codes <b>200</b></li>
 
                         <li style="text-decoration: line-through;"><i class="bi bi-check-circle"></i> Analytics
-                            <b>Advance</b></li>
+                            <b>Advance</b>
+                        </li>
 
                         <li style="text-decoration: line-through;"><i class="bi bi-check-circle"></i> Daily analytics in
                             email <b>Yes</b></li>
