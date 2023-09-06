@@ -54,7 +54,7 @@ $user_plan = strval($user_plan);
 
     </div>
 
-    <div class="free-plan ">
+    <!-- <div class="free-plan ">
 
         <button class="free-btn">Free Tools</button>
 
@@ -64,7 +64,7 @@ $user_plan = strval($user_plan);
 
         <button class="paid-btn">Paid Tools</button>
 
-    </div>
+    </div> -->
 
 </div>
 
