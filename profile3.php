@@ -115,6 +115,10 @@ if(mysqli_num_rows($sql2)>0){
         padding: 10px;
         cursor: pointer;
     }
+
+    .btn-primary {
+        background: var(--primary);
+    }
     </style>
 
 
@@ -959,7 +963,7 @@ if(mysqli_num_rows($sql2)>0){
     document.addEventListener("DOMContentLoaded", function() {
         setTimeout(function() {
             document.getElementById("myModal").style.display = "block";
-        }, 30000); // Show the modal after 1 minute (60000 milliseconds)
+        }, 30000);
 
         document.querySelector(".close").addEventListener("click", function() {
             document.getElementById("myModal").style.display = "none";
