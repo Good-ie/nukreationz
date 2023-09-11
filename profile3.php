@@ -53,6 +53,7 @@ if(mysqli_num_rows($sql2)>0){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/profile2.css">
 
     <title></title>
@@ -96,7 +97,6 @@ if(mysqli_num_rows($sql2)>0){
         width: 80%;
         max-width: 600px;
         margin: 0 auto;
-        /* Center horizontally */
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -105,7 +105,6 @@ if(mysqli_num_rows($sql2)>0){
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        /* Center vertically and horizontally */
     }
 
     .close {
@@ -118,6 +117,7 @@ if(mysqli_num_rows($sql2)>0){
 
     .btn-primary {
         background: var(--primary);
+        border: none;
     }
     </style>
 
@@ -897,7 +897,7 @@ if(mysqli_num_rows($sql2)>0){
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <a href="tel:<?php echo $phone; ?>">
-                    <button class="btn btn-primary">Dial Me</button>
+                    <button class="btn btn-primary"><i class="bi bi-telephone-fill"></i> Dial Me</button>
                 </a>
             </div>
         </div>
@@ -963,7 +963,7 @@ if(mysqli_num_rows($sql2)>0){
     document.addEventListener("DOMContentLoaded", function() {
         setTimeout(function() {
             document.getElementById("myModal").style.display = "block";
-        }, 30000);
+        }, 15000);
 
         document.querySelector(".close").addEventListener("click", function() {
             document.getElementById("myModal").style.display = "none";
