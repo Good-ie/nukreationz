@@ -79,6 +79,42 @@ if(mysqli_num_rows($sql2)>0){
         display: none;
 
     }
+
+    .modal {
+        display: none;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.7);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .modal-content {
+        background-color: white;
+        width: 80%;
+        max-width: 600px;
+        margin: 0 auto;
+        /* Center horizontally */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* Center vertically and horizontally */
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+        cursor: pointer;
+    }
     </style>
 
 
