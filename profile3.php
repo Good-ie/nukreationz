@@ -959,7 +959,7 @@ if(mysqli_num_rows($sql2)>0){
     document.addEventListener("DOMContentLoaded", function() {
         setTimeout(function() {
             document.getElementById("myModal").style.display = "block";
-        }, 60000); // Show the modal after 1 minute (60000 milliseconds)
+        }, 30000); // Show the modal after 1 minute (60000 milliseconds)
 
         document.querySelector(".close").addEventListener("click", function() {
             document.getElementById("myModal").style.display = "none";
