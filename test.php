@@ -1,7 +1,10 @@
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <a href="tel:<?php echo $phone; ?>">
-            <button class="btn btn-primary">Dial Me</button>
-        </a>
-    </div>
-</div>
+<?php
+// Password to be hashed
+$password = "12345678";
+
+// Generate a Bcrypt hash of the password
+$hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+// Display the hashed password
+echo "Hashed Password: " . $hashedPassword;
+?>
