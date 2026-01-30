@@ -1,0 +1,35 @@
+# Sensitive files - NEVER commit these
+conn.php
+admin/conn.php
+.env
+*.env
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/*.tfvars
+terraform/.terraform.lock.hcl
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+server.log
+
+# Local dev files
+start.sh
+router.php
+
+# Uploads (optional - uncomment if you don't want to commit uploads)
+# uploads/*
+# !uploads/.gitkeep
+

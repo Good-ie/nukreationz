@@ -106,10 +106,10 @@ if(mysqli_num_rows($sql2)>0){
 
     while($row = mysqli_fetch_assoc($sql2)){
 
-        $id = $row['card_id'];                           
+        $id = $row['id'];                           
         $fname = $row['firstname'];
         $lname = $row['lastname'];
-        $date = $row['created_on'];
+        $date = $row['created_at'];
         $jobtitle = $row['jobtitle'];
         $phone = $row['phone'];
 

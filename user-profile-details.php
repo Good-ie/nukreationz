@@ -1,23 +1,21 @@
 <?php
 session_start();
-
 include("conn.php");
 
 
 
-
-
-$id=$_GET['id'];
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+if($id == 0) { echo 'No card ID provided'; exit; }
 
 //$fname=$_GET['fname'];
 
 // phpinfo();
-$sql2 = mysqli_query($db, "SELECT * from card_details WHERE card_id = $id ");
+$sql2 = mysqli_query($db, "SELECT * from card_details WHERE id = $id ");
 
     if(mysqli_num_rows($sql2)>0){
         while($row = mysqli_fetch_assoc($sql2)){
             $profilepage = $row['profile_page'];
-            $date_created = $row['created_on'];
+            $date_created = $row['created_at'];
 
 
 
@@ -25,7 +23,7 @@ $sql2 = mysqli_query($db, "SELECT * from card_details WHERE card_id = $id ");
 
 
 
-            $url_link = "UPDATE card_details SET original_url='$original_url' WHERE card_id = $id ";
+            $url_link = "UPDATE card_details SET original_url='$original_url' WHERE id = $id ";
 
             if ($db->query($url_link) === TRUE) {
 
@@ -141,7 +139,7 @@ echo $user_id;
 
         <?php
 
-                $sql2 = mysqli_query($db, "SELECT * from card_details WHERE card_id = $id ");
+                $sql2 = mysqli_query($db, "SELECT * from card_details WHERE id = $id ");
 
                 if(mysqli_num_rows($sql2)>0){
 
@@ -161,7 +159,7 @@ echo $user_id;
 
                         $phone = $row['phone'];
 
-                        $date = $row['created_on'];
+                        $date = $row['created_at'];
 
                         $jobtitle = $row['jobtitle'];
 
@@ -175,7 +173,7 @@ echo $user_id;
 
                         $profilepage = $row['profile_page'];
 
-                        $date_created = $row['created_on'];
+                        $date_created = $row['created_at'];
 
                 
 
@@ -201,7 +199,7 @@ echo $user_id;
 
                     <?php
 
-        $sql33 = mysqli_query($db, "SELECT * from user_social_link WHERE card_id = $id ");
+        $sql33 = mysqli_query($db, "SELECT * from user_social_link WHERE id = $id ");
 
                 if(mysqli_num_rows($sql33)>0){
 
@@ -569,7 +567,7 @@ echo $user_id;
 
                 <?php 
 
-        $imglist = mysqli_query($db, "SELECT * FROM images WHERE card_id = $id");
+        $imglist = mysqli_query($db, "SELECT * FROM images WHERE id = $id");
 
         if(mysqli_num_rows($imglist)>0){
 

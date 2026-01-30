@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["admin_id"] = $admin["admin_id"];
             $_SESSION["email"] = $admin["email"];
             $_SESSION["user_type"] = $admin["user_type"];
-            $_SESSION["admin_type"] = $admin["admin_type"];
+            // removed duplicate
             $_SESSION["status"] = $admin["status"];
             
             header("Location: index.php");

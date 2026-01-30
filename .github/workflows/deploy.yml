@@ -1,0 +1,55 @@
+name: Deploy to AWS EC2
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/html
+            
+            # Pull latest code
+            sudo git pull origin main
+            
+            # Create conn.php with production credentials
+            sudo cat > conn.php << 'CONN'
+            <?php
+            $db = mysqli_connect(
+                '${{ secrets.DB_HOST }}',
+                '${{ secrets.DB_USERNAME }}',
+                '${{ secrets.DB_PASSWORD }}',
+                '${{ secrets.DB_NAME }}'
+            );
+            if (!$db) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            ?>
+            CONN
+            
+            # Copy to admin folder
+            sudo cp conn.php admin/conn.php
+            
+            # Set permissions
+            sudo chown -R www-data:www-data /var/www/html
+            sudo chmod -R 755 /var/www/html
+            sudo chmod -R 777 /var/www/html/uploads
+            
+            # Restart Apache
+            sudo systemctl restart apache2
+            
+            echo "Deployment completed!"

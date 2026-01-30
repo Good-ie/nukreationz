@@ -1,0 +1,15 @@
+<?php
+// Copy this file to conn.php and update with your credentials
+// DO NOT commit conn.php to git!
+
+$db = mysqli_connect(
+    'localhost',           // DB Host
+    'your_username',       // DB Username
+    'your_password',       // DB Password
+    'your_database'        // DB Name
+);
+
+if (!$db) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>

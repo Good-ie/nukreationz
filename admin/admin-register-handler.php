@@ -3,7 +3,7 @@ include ('conn.php');
 session_start();
 
 
-if ($_SESSION['admin_type'] == 1) {
+if ($_SESSION['user_type'] == 1) {
     echo '<script>alert("Only Superadmin can create a Sub Admin");</script>';
     echo "<script>location.href='admin.php';</script>";
     exit;
@@ -54,7 +54,7 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO nadmin (username, firstname, lastname, email, admin_type, password) 
+  	$query = "INSERT INTO nadmin (username, firstname, lastname, email, user_type, password) 
   			  VALUES('$username', '$firstname', '$lastname','$email', '1', '$password')";
   	mysqli_query($db, $query);
   	

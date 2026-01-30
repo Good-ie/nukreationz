@@ -33,7 +33,7 @@
         //echo $_SESSION["user_id"];
     }
 
-    $sql2 = "SELECT * from nadmin WHERE admin_type = 1 ";
+    $sql2 = "SELECT * from nadmin WHERE user_type = 1 ";
     if ($result2 = mysqli_query($db, $sql2)){
         $rowcount2 = mysqli_num_rows($result2);
     }
@@ -165,7 +165,7 @@ if(isset($_POST['delete'])) {
                     
                     
 
-                    $sql2 = mysqli_query($db, "SELECT * from nadmin WHERE admin_type = 1   LIMIT $start_from, $num_per_page ");
+                    $sql2 = mysqli_query($db, "SELECT * from nadmin WHERE user_type = 1   LIMIT $start_from, $num_per_page ");
                     if(mysqli_num_rows($sql2)>0){
 
                     while($row = mysqli_fetch_assoc($sql2)){

@@ -15,32 +15,34 @@ if (!isset($_SESSION['username'])) {
 }
 
 
-$user_id = $_SESSION["user_id"];
+$user_id = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : 0;
 
-$newplan = mysqli_query($db, "SELECT * FROM user where user_id = $user_id ");
+// Set default values
+$newplannow = 'free';
+$username = '';
+$created_at = '';
+$email = '';
+$firstname = '';
+$lastname = '';
+$profileimage = '';
+$sub_end_date = date('Y-m-d');
 
-if(mysqli_num_rows($newplan)>0){
-
-    while($row = mysqli_fetch_assoc($newplan)){        
-
-        $newplannow = $row['plan'];
-
-        $username = $row['username']; 
-
-        $created_at = $row['created_at']; 
-
-        $email = $row['email'];  
-
-        $firstname = $row['firstname'];
-
-        $lastname = $row['lastname'];  
-
-        $profileimage = $row['profile_image'];  
-        $sub_end_date = $row['sub_end'];       
-
-    }  
-
+if($user_id > 0) {
+    $newplan = mysqli_query($db, "SELECT * FROM user where user_id = $user_id ");
+    if(mysqli_num_rows($newplan)>0){
+        while($row = mysqli_fetch_assoc($newplan)){
+            $newplannow = $row['plan'];
+            $username = $row['username'];
+            $created_at = $row['created_at'];
+            $email = $row['email'];
+            $firstname = $row['firstname'];
+            $lastname = $row['lastname'];
+            $profileimage = $row['profile_image'];
+            $sub_end_date = $row['sub_end'] ?? date('Y-m-d');
+        }
+    }
 }
+
 $sub_end = new DateTime($sub_end_date);
 $currentDate = new DateTime();
 
