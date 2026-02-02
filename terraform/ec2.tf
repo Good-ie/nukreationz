@@ -21,46 +21,48 @@ resource "aws_instance" "web" {
   key_name                    = var.key_name
   subnet_id                   = aws_subnet.public_1.id
   vpc_security_group_ids      = [aws_security_group.ec2.id]
+  iam_instance_profile        = aws_iam_instance_profile.ec2_profile.name
   associate_public_ip_address = true
 
   root_block_device {
-    volume_size = 8
+    volume_size = 20
     volume_type = "gp2"
   }
 
-  user_data = <<-EOF
+  user_data = <<-USERDATA
               #!/bin/bash
+              set -e
+              
+              # Update system
               apt-get update
-              apt-get install -y apache2 php php-mysql php-gd php-curl php-xml php-mbstring git mysql-client
-              systemctl enable apache2
-              systemctl start apache2
+              apt-get upgrade -y
               
-              # Enable mod_rewrite
-              a2enmod rewrite
+              # Install Docker
+              apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+              curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+              echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+              apt-get update
+              apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
               
-              # Configure Apache
-              cat > /etc/apache2/sites-available/000-default.conf << 'APACHE'
-              <VirtualHost *:80>
-                  ServerAdmin webmaster@localhost
-                  DocumentRoot /var/www/html
-                  
-                  <Directory /var/www/html>
-                      Options Indexes FollowSymLinks
-                      AllowOverride All
-                      Require all granted
-                  </Directory>
-                  
-                 ErrorLog $${APACHE_LOG_DIR}/error.log
-                  CustomLog $${APACHE_LOG_DIR}/access.log combined
-              </VirtualHost>
-              APACHE
+              # Start Docker
+              systemctl enable docker
+              systemctl start docker
               
-              systemctl restart apache2
+              # Add ubuntu user to docker group
+              usermod -aG docker ubuntu
               
-              # Set permissions
-              chown -R www-data:www-data /var/www/html
-              chmod -R 755 /var/www/html
-              EOF
+              # Install AWS CLI
+              apt-get install -y awscli
+              
+              # Install MySQL client
+              apt-get install -y mysql-client
+              
+              # Create app directory
+              mkdir -p /home/ubuntu/app
+              chown ubuntu:ubuntu /home/ubuntu/app
+              
+              echo "Setup complete!"
+              USERDATA
 
   tags = {
     Name = "${var.project_name}-web"

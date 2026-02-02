@@ -132,14 +132,14 @@ $user_id = $_SESSION['user_id'];
                         
                 
 
-                        $id = $row['card_id'];                           
+                        $id = $row['id'];                           
                         $fname = $row['firstname'];
                         $lname = $row['lastname'];
-                        $date = $row['created_on'];
+                        $date = $row['created_at'];
                         $jobtitle = $row['jobtitle'];
                         $phone = $row['phone'];
                         $email = $row['email'];
-                        $date = $row['created_on'];
+                        $date = $row['created_at'];
                         $hit = $row['hit'];
                         
                                             

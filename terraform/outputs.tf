@@ -14,8 +14,13 @@ output "rds_endpoint" {
 }
 
 output "rds_hostname" {
-  description = "RDS hostname (without port)"
+  description = "RDS hostname"
   value       = aws_db_instance.main.address
+}
+
+output "ecr_repository_url" {
+  description = "ECR repository URL"
+  value       = aws_ecr_repository.app.repository_url
 }
 
 output "website_url" {
@@ -27,4 +32,3 @@ output "admin_url" {
   description = "Admin panel URL"
   value       = "http://${aws_instance.web.public_ip}/admin"
 }
-

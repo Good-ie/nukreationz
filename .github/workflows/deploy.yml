@@ -1,4 +1,4 @@
-name: Deploy to AWS EC2
+name: Build and Deploy to AWS
 
 on:
   push:
@@ -6,14 +6,47 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: nukreationz-app
+
 jobs:
-  deploy:
+  build-and-push:
+    name: Build and Push to ECR
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+  deploy:
+    name: Deploy to EC2
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    
+    steps:
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -21,35 +54,57 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           script: |
-            cd /var/www/html
+            # Login to ECR
+            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
             
-            # Pull latest code
-            sudo git pull origin main
+            # Pull latest image
+            docker pull ${{ secrets.ECR_REGISTRY }}/nukreationz-app:latest
             
-            # Create conn.php with production credentials
-            sudo cat > conn.php << 'CONN'
-            <?php
-            $db = mysqli_connect(
-                '${{ secrets.DB_HOST }}',
-                '${{ secrets.DB_USERNAME }}',
-                '${{ secrets.DB_PASSWORD }}',
-                '${{ secrets.DB_NAME }}'
-            );
-            if (!$db) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-            ?>
-            CONN
+            # Stop existing container
+            docker stop nukreationz-app || true
+            docker rm nukreationz-app || true
             
-            # Copy to admin folder
-            sudo cp conn.php admin/conn.php
+            # Run new container
+            docker run -d \
+              --name nukreationz-app \
+              --restart unless-stopped \
+              -p 80:80 \
+              -e DB_HOST=${{ secrets.DB_HOST }} \
+              -e DB_USERNAME=${{ secrets.DB_USERNAME }} \
+              -e DB_PASSWORD=${{ secrets.DB_PASSWORD }} \
+              -e DB_NAME=${{ secrets.DB_NAME }} \
+              ${{ secrets.ECR_REGISTRY }}/nukreationz-app:latest
             
-            # Set permissions
-            sudo chown -R www-data:www-data /var/www/html
-            sudo chmod -R 755 /var/www/html
-            sudo chmod -R 777 /var/www/html/uploads
+            # Health check
+            sleep 10
+            curl -f http://localhost/ || exit 1
             
-            # Restart Apache
-            sudo systemctl restart apache2
+            echo "Deployment successful!"
+
+  run-migrations:
+    name: Run Database Migrations
+    needs: deploy
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run migrations on RDS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          script: |
+            # Copy migration files to container
+            docker cp /home/ubuntu/app/database/migrations.sql nukreationz-app:/tmp/
+            docker cp /home/ubuntu/app/database/seeds.sql nukreationz-app:/tmp/
             
-            echo "Deployment completed!"
+            # Run migrations
+            docker exec nukreationz-app bash -c "mysql -h${{ secrets.DB_HOST }} -u${{ secrets.DB_USERNAME }} -p${{ secrets.DB_PASSWORD }} ${{ secrets.DB_NAME }} < /tmp/migrations.sql" || true
+            
+            # Run seeds
+            docker exec nukreationz-app bash -c "mysql -h${{ secrets.DB_HOST }} -u${{ secrets.DB_USERNAME }} -p${{ secrets.DB_PASSWORD }} ${{ secrets.DB_NAME }} < /tmp/seeds.sql" || true
+            
+            echo "Migrations complete!"
