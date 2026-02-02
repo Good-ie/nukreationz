@@ -149,7 +149,7 @@ echo $user_id;
 
                 
 
-                        $id = $row['card_id'];                           
+                        $id = $row['id'];                           
 
                         $fname = $row['firstname'];
 
@@ -199,7 +199,7 @@ echo $user_id;
 
                     <?php
 
-        $sql33 = mysqli_query($db, "SELECT * from user_social_link WHERE id = $id ");
+        $sql33 = mysqli_query($db, "SELECT * from user_social_link WHERE card_id = $id ");
 
                 if(mysqli_num_rows($sql33)>0){
 

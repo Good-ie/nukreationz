@@ -1,22 +1,30 @@
--- Database setup for nukreationz
--- Run with: mysql -u root -p nukreationz < setup_database.sql
+-- Database setup for nukreationz (CORRECTED VERSION)
+-- Run with: sudo mysql nukreationz < setup_database.sql
 
 CREATE TABLE IF NOT EXISTS `user` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `user_id` INT AUTO_INCREMENT PRIMARY KEY,
     `username` VARCHAR(100) NOT NULL,
     `email` VARCHAR(150) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    `plan` VARCHAR(50) DEFAULT 'free',
+    `firstname` VARCHAR(100) DEFAULT '',
+    `lastname` VARCHAR(100) DEFAULT '',
+    `profile_image` VARCHAR(255) DEFAULT '',
+    `sub_end` DATE DEFAULT NULL,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `status` VARCHAR(20) DEFAULT 'active'
 );
 
 CREATE TABLE IF NOT EXISTS `nadmin` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `admin_id` INT AUTO_INCREMENT PRIMARY KEY,
     `username` VARCHAR(100) NOT NULL,
     `firstname` VARCHAR(100),
     `lastname` VARCHAR(100),
     `email` VARCHAR(150) NOT NULL,
-    `admin_type` VARCHAR(50),
+    `user_type` VARCHAR(50),
     `password` VARCHAR(255) NOT NULL,
+    `status` VARCHAR(20) DEFAULT 'active',
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -62,7 +70,9 @@ CREATE TABLE IF NOT EXISTS `card_details` (
     `color` VARCHAR(20),
     `sec_color` VARCHAR(20),
     `text_color` VARCHAR(20),
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `hit` INT DEFAULT 0,
+    `original_url` VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS `user_social_link` (
@@ -162,3 +172,7 @@ CREATE TABLE IF NOT EXISTS `complaints` (
     `status` VARCHAR(50),
     `username` VARCHAR(100)
 );
+
+-- Insert default admin user (password: goodi321)
+INSERT INTO nadmin (username, firstname, lastname, email, user_type, password, status) 
+VALUES ('admin', 'Admin', 'User', 'admin@nukreationz.com', 'super', MD5('goodi321'), 'active');

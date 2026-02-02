@@ -54,7 +54,7 @@ if(mysqli_num_rows($newplan)>0){
 }
 
 
-$sub_end = new DateTime($sub_end_date);
+$sub_end = new DateTime($sub_end_date ?? 'now');
 $currentDate = new DateTime();
 
 if ($currentDate > $sub_end) {

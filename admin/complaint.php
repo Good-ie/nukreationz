@@ -15,7 +15,7 @@ if ($_SESSION['user_type'] == 'user') {
    exit;
 }
 
-$user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['admin_id'];
 //include("login-handler.php");
     $currentPage = 'complaint';
     

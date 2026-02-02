@@ -24,7 +24,7 @@
 
       $errors = array(); 
 
-    $user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['admin_id'];
     //include("login-handler.php");
     $currentPage = 'admin';
     
